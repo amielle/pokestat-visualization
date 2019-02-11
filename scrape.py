@@ -1,4 +1,5 @@
 import csv
+import pickle
 import re
 import sys
 import urllib.request
@@ -37,17 +38,21 @@ def get_pokemondata(url, output_file):
     raw_page_data = get_page(url)
     pokemon_data = process_htmltable_data(raw_page_data)
 
-    with open(output_file, 'w') as out:
+    with open(output_file + '.csv', 'w') as out:
         filewriter = csv.writer(out)
         filewriter.writerows(pokemon_data)
 
+    with open(output_file + '.pkl', 'wb') as f:
+        pickle.dump(pokemon_data, f)    
     out.close()
 
 def get_filename(arguments):
     "Check if proper script usage and returns filename for output"
     if (len(arguments) == 1):
-        sys.exit('         ERROR: Not enough command line arguments. \n \
-        Usage: python scrape.py <output-filename>.csv')
+        raise ValueError('\n \
+        Not enough command line arguments. \n \
+        Usage: python scrape.py <output-filename> \n \
+        Comments: Don\'t include the file extension.')
     else:
         return arguments[1]
 
