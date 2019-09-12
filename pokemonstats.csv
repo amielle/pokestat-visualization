@@ -1,4 +1,4 @@
-
+#,Name,Type,Total,HP,Attack,Defense,Sp.Atk,Sp.Def,Speed
 001,Bulbasaur,GrassPoison,318,45,49,49,65,65,45
 002,Ivysaur,GrassPoison,405,60,62,63,80,80,60
 003,Venusaur,GrassPoison,525,80,82,83,100,100,80
